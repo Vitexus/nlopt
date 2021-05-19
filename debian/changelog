@@ -1,0 +1,6 @@
+nlopt (2.7.0-1) UNRELEASED; urgency=low
+
+  * Initial release. Closes: #nnnn
+    <nnnn is the bug number of your ITP>
+
+ -- CyberVitexus <info@vitexsoftware.cz>  Wed, 19 May 2021 10:41:39 +0200

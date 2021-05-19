@@ -1,0 +1,4 @@
+usr/include/*
+usr/lib/*/lib*.so
+# don't use la file
+#usr/lib/*.la

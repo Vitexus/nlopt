@@ -1,0 +1,4 @@
+libnlopt0-dbgsym_2.7.0-1_amd64.deb debug optional automatic=yes
+libnlopt0-dev_2.7.0-1_amd64.deb math optional
+libnlopt0_2.7.0-1_amd64.deb math optional
+nlopt_2.7.0-1_amd64.buildinfo math optional

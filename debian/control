@@ -1,0 +1,26 @@
+Source: nlopt
+Section: math
+Priority: optional
+Maintainer: CyberVitexus <info@vitexsoftware.cz>
+Build-Depends: cmake, debhelper (>=11~), swig, guile-2.2-dev, liboctave-dev
+Standards-Version: 4.1.4
+Homepage: https://github.com/stevengj/nlopt
+
+#Could NOT find Matlab (missing: Matlab_INCLUDE_DIRS Matlab_MEX_LIBRARY Matlab_MEX_EXTENSION Matlab_ROOT_DIR MX_LIBRARY MAIN_PROGRAM) (found version "NOTFOUND")
+
+
+Package: libnlopt0
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: nonlinear optimization library
+ library for nonlinear optimization, wrapping many 
+ algorithms for global and local, constrained or 
+ unconstrained, optimization 
+
+Package: libnlopt0-dev
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: nonlinear optimization library development
+ library for nonlinear optimization dev files

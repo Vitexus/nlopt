@@ -1,0 +1,846 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: nlopt
+Source: <url://example.com>
+#
+# Please double check copyright with the licensecheck(1) command.
+
+Files:     .gitattributes
+           .gitignore
+           .travis.yml
+           AUTHORS
+           NEWS.md
+           README.md
+           TODO
+           appveyor.yml
+           cmake/NLoptConfig.cmake.in
+           cmake/NLoptConfigVersion.cmake.in
+           cmake/TargetLinkLibrariesWithDynamicLookup.cmake
+           cmake/generate-cpp.cmake
+           cmake/generate-fortran.cmake
+           cmake/toolchain-i686-w64-mingw32.cmake
+           cmake/toolchain-x86_64-w64-mingw32.cmake
+           doc/README
+           doc/docs/Citing_NLopt.md
+           doc/docs/NLopt_Algorithms.md
+           doc/docs/NLopt_C-plus-plus_Reference.md
+           doc/docs/NLopt_Deprecated_API_Reference.md
+           doc/docs/NLopt_FAQ.md
+           doc/docs/NLopt_Fortran_Reference.md
+           doc/docs/NLopt_Guile_Reference.md
+           doc/docs/NLopt_Installation.md
+           doc/docs/NLopt_Introduction.md
+           doc/docs/NLopt_License_and_Copyright.md
+           doc/docs/NLopt_Matlab_Reference.md
+           doc/docs/NLopt_Python_Reference.md
+           doc/docs/NLopt_R_Reference.md
+           doc/docs/NLopt_Reference.md
+           doc/docs/NLopt_Tutorial.md
+           doc/docs/NLopt_manual.md
+           doc/docs/NLopt_on_Windows.md
+           doc/docs/images/NLopt-example-constraints.png
+           doc/docs/images/Nlopt-logo.png
+           doc/docs/index.md
+           doc/requirements.txt
+           mkdocs.yml
+           nlopt.pc.in
+           nlopt_config.h.in
+           src/algs/ags/README
+           src/algs/ags/ags.cc
+           src/algs/ags/ags.h
+           src/algs/ags/tst.cc
+           src/algs/auglag/README
+           src/algs/auglag/auglag.c
+           src/algs/bobyqa/README
+           src/algs/bobyqa/README.orig
+           src/algs/bobyqa/bobyqa.c
+           src/algs/bobyqa/bobyqa.h
+           src/algs/cdirect/README
+           src/algs/cobyla/README
+           src/algs/cquad/README
+           src/algs/cquad/cquad.c
+           src/algs/crs/README
+           src/algs/direct/AUTHORS
+           src/algs/direct/DIRect.c
+           src/algs/direct/DIRparallel.c
+           src/algs/direct/DIRserial.c
+           src/algs/direct/DIRsubrout.c
+           src/algs/direct/README
+           src/algs/direct/direct-internal.h
+           src/algs/direct/direct.h
+           src/algs/direct/direct_wrap.c
+           src/algs/direct/tstc.c
+           src/algs/direct/userguide.pdf
+           src/algs/esch/README
+           src/algs/isres/README
+           src/algs/luksan/README
+           src/algs/luksan/luksan.h
+           src/algs/luksan/mssubs.c
+           src/algs/luksan/mssubs.for
+           src/algs/luksan/plip.c
+           src/algs/luksan/plip.for
+           src/algs/luksan/plip.txt
+           src/algs/luksan/plis.c
+           src/algs/luksan/plis.for
+           src/algs/luksan/plis.txt
+           src/algs/luksan/pnet.c
+           src/algs/luksan/pnet.for
+           src/algs/luksan/pnet.txt
+           src/algs/luksan/pssubs.c
+           src/algs/luksan/pssubs.for
+           src/algs/luksan/v999-07.pdf
+           src/algs/mlsl/README
+           src/algs/mma/README
+           src/algs/neldermead/README
+           src/algs/newuoa/README
+           src/algs/newuoa/README.orig
+           src/algs/newuoa/newuoa.h
+           src/algs/praxis/README
+           src/algs/praxis/praxis.c
+           src/algs/praxis/praxis.h
+           src/algs/slsqp/README
+           src/algs/slsqp/slsqp.c
+           src/algs/slsqp/slsqp.h
+           src/algs/stogo/README
+           src/algs/stogo/global.h
+           src/algs/stogo/linalg.cc
+           src/algs/stogo/linalg.h
+           src/algs/stogo/local.cc
+           src/algs/stogo/local.h
+           src/algs/stogo/paper.pdf
+           src/algs/stogo/prog.cc
+           src/algs/stogo/rosen.h
+           src/algs/stogo/stogo.cc
+           src/algs/stogo/stogo.h
+           src/algs/stogo/stogo_config.h
+           src/algs/stogo/techreport.pdf
+           src/algs/stogo/testfun.h
+           src/algs/stogo/testros.cc
+           src/algs/stogo/tools.cc
+           src/algs/stogo/tools.h
+           src/algs/stogo/tst.cc
+           src/algs/stogo/tstc.c
+           src/algs/subplex/README
+           src/algs/subplex/subplex.c
+           src/algs/subplex/subplex.h
+           src/api/CMakeLists.txt
+           src/octave/CMakeLists.txt
+           src/octave/NLOPT_AUGLAG.m
+           src/octave/NLOPT_AUGLAG_EQ.m
+           src/octave/NLOPT_GD_MLSL.m
+           src/octave/NLOPT_GD_MLSL_LDS.m
+           src/octave/NLOPT_GD_STOGO.m
+           src/octave/NLOPT_GD_STOGO_RAND.m
+           src/octave/NLOPT_GN_CRS2_LM.m
+           src/octave/NLOPT_GN_DIRECT.m
+           src/octave/NLOPT_GN_DIRECT_L.m
+           src/octave/NLOPT_GN_DIRECT_L_NOSCAL.m
+           src/octave/NLOPT_GN_DIRECT_L_RAND.m
+           src/octave/NLOPT_GN_DIRECT_L_RAND_NOSCAL.m
+           src/octave/NLOPT_GN_DIRECT_NOSCAL.m
+           src/octave/NLOPT_GN_ESCH.m
+           src/octave/NLOPT_GN_ISRES.m
+           src/octave/NLOPT_GN_MLSL.m
+           src/octave/NLOPT_GN_MLSL_LDS.m
+           src/octave/NLOPT_GN_ORIG_DIRECT.m
+           src/octave/NLOPT_GN_ORIG_DIRECT_L.m
+           src/octave/NLOPT_G_MLSL.m
+           src/octave/NLOPT_G_MLSL_LDS.m
+           src/octave/NLOPT_LD_AUGLAG.m
+           src/octave/NLOPT_LD_AUGLAG_EQ.m
+           src/octave/NLOPT_LD_CCSAQ.m
+           src/octave/NLOPT_LD_LBFGS.m
+           src/octave/NLOPT_LD_LBFGS_NOCEDAL.m
+           src/octave/NLOPT_LD_MMA.m
+           src/octave/NLOPT_LD_SLSQP.m
+           src/octave/NLOPT_LD_TNEWTON.m
+           src/octave/NLOPT_LD_TNEWTON_PRECOND.m
+           src/octave/NLOPT_LD_TNEWTON_PRECOND_RESTART.m
+           src/octave/NLOPT_LD_TNEWTON_RESTART.m
+           src/octave/NLOPT_LD_VAR1.m
+           src/octave/NLOPT_LD_VAR2.m
+           src/octave/NLOPT_LN_AUGLAG.m
+           src/octave/NLOPT_LN_AUGLAG_EQ.m
+           src/octave/NLOPT_LN_BOBYQA.m
+           src/octave/NLOPT_LN_COBYLA.m
+           src/octave/NLOPT_LN_NELDERMEAD.m
+           src/octave/NLOPT_LN_NEWUOA.m
+           src/octave/NLOPT_LN_NEWUOA_BOUND.m
+           src/octave/NLOPT_LN_PRAXIS.m
+           src/octave/NLOPT_LN_SBPLX.m
+           src/octave/dummy.c
+           src/octave/mkconstants.sh
+           src/octave/nlopt_minimize.m
+           src/octave/nlopt_minimize_constrained.m
+           src/octave/nlopt_optimize.m
+           src/swig/CMakeLists.txt
+           src/swig/nlopt-exceptions.i
+           src/swig/nlopt-guile.i
+           src/swig/nlopt-python.i
+           src/swig/nlopt.i
+           src/swig/numpy.i
+           src/util/mt19937ar_test.c
+           src/util/nlopt-getopt.c
+           test/CMakeLists.txt
+           test/box.c
+           test/lorentzfit.c
+           test/myconstraint.m
+           test/myfunc.m
+           test/t_fortran.f90
+           test/t_guile.scm
+           test/t_matlab.m
+           test/t_octave.m
+           test/t_python.py
+           test/t_tutorial.cxx
+           test/testfuncs.c
+           test/testfuncs.h
+Copyright: __NO_COPYRIGHT_NOR_LICENSE__
+License:   __NO_COPYRIGHT_NOR_LICENSE__
+
+Files:     COPYRIGHT
+           src/algs/ags/COPYRIGHT
+           src/algs/auglag/auglag.h
+           src/algs/bobyqa/COPYRIGHT
+           src/algs/cdirect/cdirect.c
+           src/algs/cdirect/cdirect.h
+           src/algs/cdirect/hybrid.c
+           src/algs/cobyla/COPYRIGHT
+           src/algs/cquad/cquad.h
+           src/algs/crs/crs.c
+           src/algs/crs/crs.h
+           src/algs/esch/COPYRIGHT
+           src/algs/esch/esch.c
+           src/algs/esch/esch.h
+           src/algs/isres/isres.c
+           src/algs/isres/isres.h
+           src/algs/mlsl/mlsl.h
+           src/algs/mma/mma.c
+           src/algs/mma/mma.h
+           src/algs/neldermead/neldermead.h
+           src/algs/neldermead/nldrmd.c
+           src/algs/neldermead/sbplx.c
+           src/algs/newuoa/COPYRIGHT
+           src/algs/stogo/COPYRIGHT
+           src/api/deprecated.c
+           src/api/f77api.c
+           src/api/f77funcs.h
+           src/api/general.c
+           src/api/nlopt-internal.h
+           src/api/nlopt.h
+           src/api/optimize.c
+           src/api/options.c
+           src/octave/nlopt_optimize-mex.c
+           src/octave/nlopt_optimize-oct.cc
+           src/util/nlopt-util.h
+           src/util/qsort_r.c
+           src/util/redblack.h
+           src/util/redblack_test.c
+           src/util/rescale.c
+           src/util/soboldata.h
+           src/util/sobolseq_test.c
+           src/util/stop.c
+           src/util/timer.c
+           test/testopt.c
+Copyright: 1992 Michael J. D. Powell (M.J.D.Powell@damtp.cam.ac.uk)
+           1998 S. Zertchaninov and K. Madsen.
+           2004 Jean-Sebastien Roy (js@jeannot.org)
+           2004 M. J. D. Powell (mjdp@cam.ac.uk)
+           2007-2014 Massachusetts Institute of Technology
+           2007-2020 Massachusetts Institute of Technology and other contributors
+           2008 Steven G. Johnson (stevenj@alum.mit.edu)
+           2008-2013 Carlos Henrique da Silva Santos
+           2009 M. J. D. Powell (mjdp@cam.ac.uk) Modifications Copyright (c) 2010 Massachusetts Institute of Technology
+           2018 Sovrasov V.
+License:   Expat
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Files:     src/algs/ags/data_types.hpp
+           src/algs/ags/evolvent.cc
+           src/algs/ags/evolvent.hpp
+           src/algs/ags/local_optimizer.cc
+           src/algs/ags/local_optimizer.hpp
+           src/algs/ags/solver.cc
+           src/algs/ags/solver.hpp
+           src/algs/cobyla/README.orig
+Copyright: 1992 Michael J. D. Powell (M.J.D.Powell@damtp.cam.ac.uk)
+           2004 J.S. Roy (js@jeannot.org) See the LICENSE file for copyright information. $Jeannot: README,v 1.7 2004/04/18 14:04:20 js Exp $
+           2018 Sovrasov V. - * You may use, distribute and modify this code under the * terms of the MIT license. * You should have received a copy of the MIT license with * this file. If not visit https://opensource.org/licenses/MIT
+License:   __NO_LICENSE__
+
+Files:     src/api/nlopt.3
+           src/api/nlopt_minimize.3
+           src/api/nlopt_minimize_constrained.3
+Copyright: 2007 Massachusetts Institute of Technology
+License:   PERMISSIVE
+ Copying and distribution of this file, with or without modification,
+ are permitted in any medium without royalty provided the copyright
+ notice and this notice are preserved.
+
+Files:     src/algs/mlsl/mlsl.c
+Copyright: 2007-2014 Massachusetts Institute of Technology
+License:   Expat
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ .
+ Multi-Level Single-Linkage (MLSL) algorithm for
+ global optimization by random local optimizations (a multistart algorithm
+ with "clustering" to avoid repeated detection of the same local minimum),
+ modified to optionally use a Sobol' low-discrepancy sequence (LDS) instead
+ of pseudorandom numbers.  See:
+ .
+ A. H. G. Rinnooy Kan and G. T. Timmer, "Stochastic global optimization
+ methods," Mathematical Programming, vol. 39, p. 27-78 (1987).
+ [ actually 2 papers -- part I: clustering methods (p. 27), then
+ part II: multilevel methods (p. 57) ]
+ .
+ and also:
+ .
+ Sergei Kucherenko and Yury Sytsko, "Application of deterministic
+ low-discrepancy sequences in global optimization," Computational
+ Optimization and Applications, vol. 30, p. 297-318 (2005).
+ .
+ Compared to the above papers, I made a couple other modifications
+ to the algorithm besides the use of a LDS.
+ .
+ 1) first, the original algorithm suggests discarding points
+ within a *fixed* distance of the boundaries or of previous
+ local minima; I changed this to a distance that decreases with,
+ iteration, proportional to the same threshold radius used
+ for clustering.  (In the case of the boundaries, I make
+ the proportionality constant rather small as well.)
+ .
+ 2) Kan and Timmer suggest using fancy "spiral-search" algorithms
+ to quickly locate nearest-neighbor points, reducing the
+ overall time for N sample points from O(N^2) to O(N log N)
+ However, recent papers seem to show that such schemes (kd trees,
+ etcetera) become inefficient for high-dimensional spaces (d > 20),
+ and finding a better approach seems to be an open question.  Therefore,
+ since I am mainly interested in MLSL for high-dimensional problems
+ (in low dimensions we have DIRECT etc.), I punted on this question
+ for now.  In practice, O(N^2) (which does not count the #points
+ evaluated in local searches) does not seem too bad if the objective
+ function is expensive.
+
+Files:     src/algs/cobyla/cobyla.c
+Copyright: 1992 Michael J. D. Powell (M.J.D.Powell@damtp.cam.ac.uk)
+           2004 Jean-Sebastien Roy (js@jeannot.org)
+License:   Expat
+ Permission is hereby granted, free of charge, to any person obtaining a
+ copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included
+ in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ .
+ This software is a C version of COBYLA2, a contrained optimization by linear
+ approximation package developed by Michael J. D. Powell in Fortran.
+ .
+ The original source code can be found at :
+ http://plato.la.asu.edu/topics/problems/nlores.html
+ .
+ Original RCS id
+
+Files:     src/algs/mma/ccsa_quadratic.c
+Copyright: 2007-2014 Massachusetts Institute of Technology
+License:   Expat
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ .
+ In this file we implement Svanberg's CCSA algorithm with the
+ simple linear approximation + quadratic penalty function.
+ .
+ We also allow the user to specify an optional "preconditioner": an
+ approximate Hessian (which must be symmetric & positive
+ semidefinite) that can be added into the approximation.  [X. Liang
+ and I went through the convergence proof in Svanberg's paper
+ and it does not seem to be modified by such preconditioning, as
+ long as the preconditioner eigenvalues are bounded above for all x.]
+ .
+ For the non-preconditioned case the trust-region subproblem is
+ separable and can be solved by a dual method.  For the preconditioned
+ case the subproblem is still convex but in general is non-separable
+ so we solve by calling the same algorithm recursively, under the
+ assumption that the subproblem objective is cheap to evaluate.
+
+Files:     src/api/f77funcs_.h
+Copyright: 2007-2014 Massachusetts Institute of Technology
+License:   Expat
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ .
+ Fortran API wrappers, using the F77 macro defined in f77api.c.
+ This header file is #included one or more times from f77api.c
+ in order to define verions of the Fortran API for various compilers.
+ .
+ All of the functions in this file have underscores in their names,
+ which means that they are treated differently for name-mangling
+ (thank you, g77 and f2c) than names without underscores.
+ .
+ The return value of a function is converted to the first argument
+ of a subroutine.
+
+Files:     src/util/sobolseq.c
+Copyright: 2007 Massachusetts Institute of Technology
+License:   Expat
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ .
+ Generation of Sobol sequences in up to 1111 dimensions, based on the
+ algorithms described in:
+ P. Bratley and B. L. Fox, Algorithm 659, ACM Trans.
+ Math. Soft. 14 (1), 88-100 (1988),
+ as modified by:
+ S. Joe and F. Y. Kuo, ACM Trans. Math. Soft 29 (1), 49-57 (2003).
+ .
+ Note that the code below was written without even looking at the
+ Fortran code from the TOMS paper, which is only semi-free (being
+ under the restrictive ACM copyright terms).  Then I went to the
+ Fortran code and took out the table of primitive polynomials and
+ starting direction #'s ... since this is just a table of numbers
+ generated by a deterministic algorithm, it is not copyrightable.
+ (Obviously, the format of these tables then necessitated some
+ slight modifications to the code.)
+ .
+ For the test integral of Joe and Kuo (see the main() program
+ below), I get exactly the same results for integrals up to 1111
+ dimensions compared to the table of published numbers (to the 5
+ published significant digits).
+ .
+ This is not to say that the authors above should not be credited for
+ their clear description of the algorithm (and their tabulation of
+ the critical numbers).  Please cite them.  Just that I needed
+ a free/open-source implementation.
+
+Files:     src/algs/newuoa/newuoa.c
+Copyright: 2004 M. J. D. Powell (mjdp@cam.ac.uk)
+           2007-2014 Massachusetts Institute of Technology
+License:   Expat
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ .
+ NEWUOA derivative-free optimization algorithm by M. J. D. Powell.
+ Original Fortran code by Powell (2004).  Converted via f2c, cleaned up,
+ and incorporated into NLopt by S. G. Johnson (2008).  See README.
+
+Files:     src/util/redblack.c
+Copyright: 2007-2014 Massachusetts Institute of Technology
+License:   Expat
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ .
+ simple implementation of red-black trees optimized for use with DIRECT
+
+Files:     src/api/nlopt-in.hpp
+Copyright: 2007-2011 Massachusetts Institute of Technology
+License:   Expat
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ .
+ C++ style wrapper around NLopt API
+ nlopt.hpp is AUTOMATICALLY GENERATED from nlopt-in.hpp - edit the latter!
+
+Files:     src/algs/cobyla/cobyla.h
+Copyright: 1992 Michael J. D. Powell (M.J.D.Powell@damtp.cam.ac.uk)
+           2004 Jean-Sebastien Roy (js@jeannot.org)
+License:   Expat
+ Permission is hereby granted, free of charge, to any person obtaining a
+ copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included
+ in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ .
+ This software is a C version of COBYLA2, a contrained optimization by linear
+ approximation package developed by Michael J. D. Powell in Fortran.
+ .
+ The original source code can be found at :
+ http://plato.la.asu.edu/topics/problems/nlores.html
+ .
+ $Jeannot: cobyla.h,v 1.10 2004/04/18 09:51:37 js Exp $
+
+Files:     cmake/FindNumPy.cmake
+Copyright: 2012 Continuum Analytics, Inc.
+License:   Expat
+ MIT License
+ .
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files
+ (the "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to permit
+ persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included
+ in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+
+Files:     src/algs/luksan/COPYRIGHT
+Copyright: __NO_COPYRIGHT__ in: src/algs/luksan/COPYRIGHT
+License:   __UNKNOWN__
+ Permission is hereby granted to use or copy this program under the
+ terms of the GNU LGPL, provided that the Copyright, this License,
+ and the Availability of the original version is retained on all copies.
+ User documentation of any code that uses this code or any modified
+ version of this code must cite the Copyright, this License, the
+ Availability note, and "Used by permission." Permission to modify
+ the code and to distribute modified code is granted, provided the
+ Copyright, this License, and the Availability note are retained,
+ and a notice that the code was modified is included.
+ .
+ Availability:
+ .
+ http://www.cs.cas.cz/~luksan/subroutines.html
+ .
+ Acknowledgements:
+ .
+ This work was supported by the Grant Agency of the Czech Academy of
+ Sciences, under grant IAA1030405.
+
+Files:     CMakeLists.txt
+Copyright: __NO_COPYRIGHT__ in: CMakeLists.txt
+License:   __UNKNOWN__
+ This CMakeLists.txt file was created to compile NLOPT with the CMAKE utility.
+ Benoit Scherrer, 2010 CRL, Harvard Medical School
+ Copyright (c) 2008-2009 Children's Hospital Boston
+
+Files:     src/algs/stogo/global.cc
+Copyright: __NO_COPYRIGHT__ in: src/algs/stogo/global.cc
+License:   __UNKNOWN__
+ This program is supplied without any warranty whatsoever.
+ .
+ NB The RNGs seed should be initialized using some timer
+
+Files:     cmake/FindGuile.cmake
+Copyright: 2008-2014 OpenCog.org (http://opencog.org)
+License:   __UNKNOWN__
+ Redistribution and use is allowed according to the terms of the BSD license.
+ For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+ .
+ - Try to find Guile; Once done this will define
+
+Files:     src/util/mt19937ar.c
+Copyright: 1997-2002 Makoto Matsumoto and Takuji Nishimura,
+License:   __UNKNOWN__
+ Modified 2007 by Steven G. Johnson for use with NLopt (to avoid
+
+Files:     cmake/FindOctave.cmake
+Copyright: 2013 Julien Schueller
+License:   BSD-2-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+ 1. Redistributions of source code must retain the above copyright notice, this
+ list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright notice,
+ this list of conditions and the following disclaimer in the documentation
+ and/or other materials provided with the distribution.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ The views and conclusions contained in the software and documentation are those
+ of the authors and should not be interpreted as representing official policies,
+ either expressed or implied, of the FreeBSD Project.
+
+Files:     src/algs/slsqp/COPYRIGHT
+Copyright: 1988 Dieter Kraft
+           1994 Association for Computing Machinery
+           2001-2002 Enthought, Inc.
+           2003-2009 SciPy Developers.
+           2010 Massachusetts Institute of Technology
+License:   BSD-3-Clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ .
+ a. Redistributions of source code must retain the above copyright notice,
+ this list of conditions and the following disclaimer.
+ b. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+ c. Neither the name of the Enthought nor the names of its contributors
+ may be used to endorse or promote products derived from this software
+ without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE FOR
+ ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
+ DAMAGE.
+ .
+ C      http://permalink.gmane.org/gmane.comp.python.scientific.devel/6725
+ C      ------
+ C      From: Deborah Cotton <cotton@hq.acm.org>
+ C      Date: Fri, 14 Sep 2007 12:35:55 -0500
+ C      Subject: RE: Algorithm License requested
+ C      To: Alan Isaac
+ C
+ C      Prof. Issac,
+ C
+ C      In that case, then because the author consents to [the ACM] releasing
+ C      the code currently archived at http://www.netlib.org/toms/733 under the
+ C      BSD license, the ACM hereby releases this code under the BSD license.
+ C
+ C      Regards,
+ C
+ C      Deborah Cotton, Copyright & Permissions
+ C      ACM Publications
+ C      2 Penn Plaza, Suite 701**
+ C      New York, NY 10121-0701
+ C      permissions@acm.org
+ C      212.869.7440 ext. 652
+ C      Fax. 212.869.0481
+ C      ------
+ .
+ On Debian systems, the complete text of the BSD 3-clause "New" or "Revised"
+ License can be found in `/usr/share/common-licenses/BSD'.
+
+Files:     src/util/nlopt-getopt.h
+Copyright: 1987-1994 The Regents of the University of California.
+License:   BSD-4-Clause-UC
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+ 3. All advertising materials mentioning features or use of this software
+ must display the following acknowledgement:
+ This product includes software developed by the University of
+ California, Berkeley and its contributors.
+ 4. Neither the name of the University nor the names of its contributors
+ may be used to endorse or promote products derived from this software
+ without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ SUCH DAMAGE.
+
+#----------------------------------------------------------------------------
+# Files marked as NO_LICENSE_TEXT_FOUND may be covered by the following
+# license/copyright files.
+
+#----------------------------------------------------------------------------
+# License file: COPYING
+ NLopt combines several free/open-source nonlinear optimization
+ libraries by various authors.  See the COPYING, COPYRIGHT, and README
+ files in the subdirectories for the original copyright and licensing
+ information of these packages.
+ .
+ The compiled NLopt library, i.e. the combined work of all of the
+ included optimization routines, is licensed under the conjunction of
+ all of these licensing terms.  Currently, the most restrictive terms
+ are for the code in the "luksan" directory, which is licensed under
+ the GNU Lesser General Public License (GNU LGPL), version 2.1 or
+ later (see luksan/COPYRIGHT).
+ .
+ That means that the compiled NLopt library is governed by the terms of
+ the LGPL.
+ .
+ ---------------------------------------------------------------------------
+ .
+ Other portions of NLopt, including any modifications to the abovementioned
+ packages, are licensed under the standard "MIT License:"
+ .
+ Copyright (c) 2007-2011 Massachusetts Institute of Technology
+ .
+ Permission is hereby granted, free of charge, to any person obtaining
+ a copy of this software and associated documentation files (the
+ "Software"), to deal in the Software without restriction, including
+ without limitation the rights to use, copy, modify, merge, publish,
+ distribute, sublicense, and/or sell copies of the Software, and to
+ permit persons to whom the Software is furnished to do so, subject to
+ the following conditions:
+ .
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
