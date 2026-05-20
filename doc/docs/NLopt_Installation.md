@@ -2,7 +2,7 @@
 # NLopt Installation
 ---
 
-The installation of NLopt is fairly standard and straightforward, at least on Unix-like systems (GNU/Linux is fine). It doesn't require any particular packages to be installed except for a C compiler, although you need to have [Octave](https://en.wikipedia.org/wiki/GNU_Octave) and/or Matlab installed if you want to install the Octave and/or Matlab plugins, respectively.
+The installation of NLopt is fairly standard and straightforward, at least on Unix-like systems (GNU/Linux is fine). It doesn't require any particular packages to be installed except for a C compiler, although you need to have [Octave](https://en.wikipedia.org/wiki/GNU_Octave), Matlab, [Guile](https://www.gnu.org/software/guile/) or [Python](https://www.python.org/) installed if you want to install the corresponding plugins.
 
 In particular, NLopt uses the standard [CMake](https://cmake.org/) `cmake` build system, which means that you compile it via:
 
@@ -76,6 +76,19 @@ cmake -DBUILD_SHARED_LIBS=OFF ..
 Then you run `make` and `make` `install` as usual.
 
 
+Vcpkg
+-----
+
+Alternatively, you can build and install NLopt using [vcpkg](https://github.com/Microsoft/vcpkg/) dependency manager:
+
+    git clone https://github.com/Microsoft/vcpkg.git
+    cd vcpkg
+    ./bootstrap-vcpkg.sh
+    ./vcpkg integrate install
+    ./vcpkg install nlopt
+
+The NLopt port in vcpkg is kept up to date by Microsoft team members and community contributors. If the version is out of date, please [create an issue or pull request](https://github.com/Microsoft/vcpkg) on the vcpkg repository.
+
 Octave and Matlab plugins
 -------------------------
 
@@ -86,7 +99,7 @@ When you compile NLopt using the above commands, it will automatically compile p
 In particular, for Matlab plugins to be installed, you should provide the Matlab installation dir, eg:
 
 ```sh
-cmake -DMatlab_ROOT_DIR=/opt/matlab/RYYYYx/ ..
+cmake -DNLOPT_MATLAB=ON -DMatlab_ROOT_DIR=/opt/matlab/RYYYYx/ ..
 ```
 
 Some versions of Matlab also require that you compile NLopt as a shared library in order to produce a Matlab plugin; see below.
@@ -109,7 +122,7 @@ cmake -DNLOPT_CXX=OFF ..
 
 For the Octave plugins to be installed, you need to have the Octave `mkoctfile` program in your PATH. `mkoctfile` is Octave's equivalent of `mex`. If you are using a GNU/Linux system, and you installed Octave using one of the precompiled packages for your distribution, then you probably need to install a *separate package* to get `mkoctfile`. For example, on Debian you need to install the `octave-headers` package, and on Redhat you need the `octave-devel` package.
 
-By default, the compiled Octave plugins (`.oct` files) are installed into the octave extension binary directory relatively to the installation prefix (usually something like `/usr/local/lib/octave/2.1.73/site/oct/i486-pc-linux-gnu`), and the .m script files are installed into the site extension directory relatively the the installation prefix (usually something like `/usr/local/share/octave/2.1.73/site/m/`). You can change these defaults by passing `INSTALL_OCT_DIR` and `INSTALL_M_DIR`, respectively, to the cmake script, via:
+By default, the compiled Octave plugins (`.oct` files) are installed into the octave extension binary directory relatively to the installation prefix (usually something like `/usr/local/lib/octave/2.1.73/site/oct/i486-pc-linux-gnu`), and the .m script files are installed into the site extension directory relatively to the installation prefix (usually something like `/usr/local/share/octave/2.1.73/site/m/`). You can change these defaults by passing `INSTALL_OCT_DIR` and `INSTALL_M_DIR`, respectively, to the cmake script, via:
 
 ```sh
 cmake -DINSTALL_OCT_DIR=octdir -DINSTALL_M_DIR=mdir ..
@@ -118,18 +131,18 @@ cmake -DINSTALL_OCT_DIR=octdir -DINSTALL_M_DIR=mdir ..
 Python plugins
 --------------
 
-If [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) is installed on your machine, and you configured NLopt as a shared library (see above), then NLopt will automatically compile and install a Python `nlopt` module. You also need [NumPy](https://en.wikipedia.org/wiki/NumPy) to be installed, as NLopt's Python interface uses NumPy array types.
+If [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) and [SWIG](https://www.swig.org/) are installed on your machine, then NLopt will automatically compile and install a Python `nlopt` module. You also need [NumPy](https://en.wikipedia.org/wiki/NumPy) to be installed, as NLopt's Python interface uses NumPy array types.
 
-To specify a particular version or location of Python, use the `PYTHON_EXECUTABLE` variable to set the full path to the `python` executable:
+To specify a particular version or location of Python, use the `Python_EXECUTABLE` variable to set the full path to the `python` executable:
 
 ```sh
-cmake -DPYTHON_EXECUTABLE=/usr/bin/python ..
+cmake -DPython_EXECUTABLE=/usr/bin/python ..
 ```
 
 GNU Guile plugins
 -----------------
 
-If [Guile](https://en.wikipedia.org/wiki/GNU_Guile) is installed on your machine, and you configured NLopt as a shared library (see above), then a Guile `nlopt` module will automatically be compiled and installed.
+If [Guile](https://en.wikipedia.org/wiki/GNU_Guile) and [SWIG](https://www.swig.org/) are installed on your machine, then a Guile `nlopt` module will automatically be compiled and installed.
 
 Note that many GNU/Linux distributions come with only the Guile program and shared libraries pre-installed; to compile the NLopt plugin you will also need the Guile programming header files, which are usually in a `guile-dev` or `guile-devel` package that you must install separately.
 
@@ -158,3 +171,11 @@ however, it will disable algorithms implemented in C++ (StoGO and AGS algorithms
 
 The resulting library has the *same* interface as the ordinary NLopt library, and can *still* be called from ordinary C, C++, and Fortran programs. However, one no longer has to link with the C++ standard libraries, which can sometimes be convenient for non-C++ programs, and allows libnlopt to be compatible with multiple C++ compilers simultaneously.
 
+LGPL solvers
+------------
+
+It is possible to build NLopt as fully permissive library by disabling the LGPL Luksan solvers with:
+
+```sh
+cmake -DNLOPT_LUKSAN=OFF ..
+```

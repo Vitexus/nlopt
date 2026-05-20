@@ -32,14 +32,14 @@
    Richardson and Kuester (1973), as mentioned below. */
 
 /* heuristic "strategy" constants: */
-static const double alpha = 1, beta = 0.5, gamm = 2, delta = 0.5;
+static const double ALPHA = 1, BETA = 0.5, GAMMA = 2, DELTA = 0.5;
 
 /* sort order in red-black tree: keys [f(x), x] are sorted by f(x) */
 static int simplex_compare(double *k1, double *k2)
 {
      if (*k1 < *k2) return -1;
      if (*k1 > *k2) return +1;
-     return k1 - k2; /* tie-breaker */
+     return (int)(k1 - k2); /* tie-breaker */
 }
 
 /* return 1 if a and b are approximately equal relative to floating-point
@@ -187,7 +187,7 @@ nlopt_result nldrmd_minimize_(int n, nlopt_func f, void *f_data,
 	       goto done;
 	  }
 
-	  /* compute centroid ... if we cared about the perfomance of this,
+	  /* compute centroid ... if we cared about the performance of this,
 	     we could do it iteratively by updating the centroid on
 	     each step, but then we would have to be more careful about
 	     accumulation of rounding errors... anyway n is unlikely to
@@ -202,7 +202,10 @@ nlopt_result nldrmd_minimize_(int n, nlopt_func f, void *f_data,
 	  for (i = 0; i < n; ++i) c[i] *= ninv;
 
 	  /* x convergence check: find xcur = max radius from centroid */
-	  memset(xcur, 0, sizeof(double)*n);
+		if (n > 0)
+		{
+	    memset(xcur, 0, sizeof(double)*n);
+		}
 	  for (i = 0; i < n + 1; ++i) {
                double *xi = pts + i*(n+1) + 1;
 	       for (j = 0; j < n; ++j) {
@@ -225,14 +228,14 @@ nlopt_result nldrmd_minimize_(int n, nlopt_func f, void *f_data,
 	  }
 
 	  /* reflection */
-	  if (!reflectpt(n, xcur, c, alpha, xh, lb, ub)) { 
+	  if (!reflectpt(n, xcur, c, ALPHA, xh, lb, ub)) { 
 	       ret=NLOPT_XTOL_REACHED; goto done; 
 	  }
 	  fr = f(n, xcur, NULL, f_data);
 	  CHECK_EVAL(xcur, fr);
 
 	  if (fr < fl) { /* new best point, expand simplex */
-	       if (!reflectpt(n, xh, c, gamm, xh, lb, ub)) {
+	       if (!reflectpt(n, xh, c, GAMMA, xh, lb, ub)) {
 		    ret=NLOPT_XTOL_REACHED; goto done; 
 	       }
 	       fh = f(n, xh, NULL, f_data);
@@ -248,7 +251,7 @@ nlopt_result nldrmd_minimize_(int n, nlopt_func f, void *f_data,
 	  }
 	  else { /* new worst point, contract */
 	       double fc;
-	       if (!reflectpt(n,xcur,c, fh <= fr ? -beta : beta, xh, lb,ub)) {
+	       if (!reflectpt(n,xcur,c, fh <= fr ? -BETA : BETA, xh, lb,ub)) {
 		    ret=NLOPT_XTOL_REACHED; goto done; 
 	       }
 	       fc = f(n, xcur, NULL, f_data);
@@ -263,7 +266,7 @@ nlopt_result nldrmd_minimize_(int n, nlopt_func f, void *f_data,
 		    for (i = 0; i < n+1; ++i) {
 			 double *pt = pts + i * (n+1);
 			 if (pt+1 != xl) {
-			      if (!reflectpt(n,pt+1, xl,-delta,pt+1, lb,ub)) {
+			      if (!reflectpt(n,pt+1, xl,-DELTA,pt+1, lb,ub)) {
 				   ret = NLOPT_XTOL_REACHED;
 				   goto done;
 			      }

@@ -65,7 +65,7 @@ depending on whether one wishes to minimize or maximize the objective function `
 def f(x, grad):
     if grad.size > 0:
        ...set grad to gradient, in-place...
-       return ...value of f(x)...
+    return ...value of f(x)...
 ```
 
 The return value should be the value of the function at the point `x`, where `x` is a NumPy array of length `n` of the optimization parameters (the same as the dimension passed to the constructor).
@@ -150,9 +150,9 @@ Here, `tol` is an array (NumPy array or Python list) of the tolerances in each c
 def c(result, x, grad):
     if grad.size > 0:
        ...set grad to gradient, in-place...
-       result[0] = ...value of c_0(x)...
-       result[1] = ...value of c_1(x)...
-       ...
+    result[0] = ...value of c_0(x)...
+    result[1] = ...value of c_1(x)...
+    ...
 ```
 
 `result` is a NumPy array whose length equals the dimensionality *m* of the constraint (same as the length of `tol` above), which upon return should be set *in-place* ([see above](#assigning-results-in-place)) to the constraint results at the point `x` (a NumPy array whose length *n* is the same as the dimension passed to the constructor). Any return value of the function is ignored.
@@ -247,7 +247,7 @@ opt.get_param("name", defaultval);
 opt.num_params();
 opt.nth_param(n);
 ```
-where the string `"name"` is the name of an algorithm-specific parameter and `val` is the value you are setting the parameter to.   These functions are equivalent to the [C API](NLopt_Reference#algorithm-specific-parameters) functions of the corresponding names.
+where the string `"name"` is the name of an algorithm-specific parameter and `val` is the value you are setting the parameter to.   These functions are equivalent to the [C API](NLopt_Reference.md#algorithm-specific-parameters) functions of the corresponding names.
 
 
 Performing the optimization
@@ -268,7 +268,7 @@ opt_val = opt.last_optimum_value()
 result = opt.last_optimize_result()
 ```
 
-The return code (see below) is positive on success, indicating the reason for termination. On failure (negative return codes), `optimize()` throws an exception (see [Exceptions](#exceptions), below).
+The return code (see below) is positive on success, indicating the reason for termination. On failure (negative return codes), by default, `optimize()` throws an exception (see [Exceptions](#exceptions), below).
 
 ### Return values
 
@@ -277,7 +277,7 @@ The possible return values are the same as the [return values in the C API](NLop
 Exceptions
 ----------
 
-The [Error codes (negative return values)](NLopt_Reference.md#error-codes-negative-return-values) in the C API are replaced in the Python API by thrown exceptions. The following exceptions are thrown by the various routines:
+If exceptions are enabled (the default), the [Error codes (negative return values)](NLopt_Reference.md#error-codes-negative-return-values) in the C API are replaced in the Python API by thrown exceptions. The following exceptions are thrown by the various routines:
 
 ```
 RunTimeError
@@ -303,7 +303,16 @@ Halted because roundoff errors limited progress, equivalent to `NLOPT_ROUNDOFF_L
 `nlopt.ForcedStop` (subclass of `Exception`)
 Halted because of a [forced termination](#forced-termination): the user called `opt.force_stop()` from the user’s objective function or threw an `nlopt.ForcedStop` exception. Equivalent to `NLOPT_FORCED_STOP`.
 
-If your objective/constraint functions throw *any* exception during the execution of `opt.optimize`, it will be caught by NLopt and the optimization will be halted gracefully, and `opt.optimize` will re-throw the *same* exception to its caller.
+Whether this behavior is enabled or whether `optimize` just returns the error code as is is controlled by the `enable_exceptions` flag in `nlopt.opt`, which can be set and retrieved with the methods below.
+
+```
+opt.set_exceptions_enabled(enable)
+opt.get_exceptions_enabled()
+```
+
+The default is `True`, i.e., to throw an exception. When setting `opt.set_exceptions_enabled(False)`, it is the caller's responsibility to *manually* check `opt.last_optimize_result()`. While that makes the `False` setting more error-prone, it has the advantage that the best point found (which can be quite good even in some error cases) can still be returned through the return value of `optimize`, so is not lost, whereas if exceptions are enabled through `opt.set_exceptions_enabled(True)`, the exception prevents the best point from being returned.
+
+If your objective/constraint functions throw *any* exception during the execution of `opt.optimize`, it will be caught by NLopt and the optimization will be halted gracefully, and `opt.optimize` will re-throw the *same* exception to its caller. For Python, the exception *will always* be rethrown, even if exceptions are otherwise disabled (`opt.set_exceptions_enabled(False)`).
 
 Local/subsidiary optimization algorithm
 ---------------------------------------
@@ -321,7 +330,7 @@ This function makes a copy of the `local_opt` object, so you can freely change y
 Initial step size
 -----------------
 
-Just as in the C API, you can [get and set the initial step sizes](NLopt_Reference#initial-step-size) for derivative-free optimization algorithms. The Python equivalents of the C functions are the following methods:
+Just as in the C API, you can [get and set the initial step sizes](NLopt_Reference.md#initial-step-size) for derivative-free optimization algorithms. The Python equivalents of the C functions are the following methods:
 
 ```py
 opt.set_initial_step(dx)

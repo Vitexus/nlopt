@@ -83,10 +83,10 @@ static const char nlopt_algorithm_names[NLOPT_NUM_ALGORITHMS][256] = {
     "Sequential Quadratic Programming (SQP) (local, derivative)",
     "CCSA (Conservative Convex Separable Approximations) with simple quadratic approximations (local, derivative)",
     "ESCH evolutionary strategy",
-#ifdef NLOPT_CXX11
-    "AGS (global, no-derivative)"
+#ifdef NLOPT_CXX
+    "AGS (global, no-derivative)",
 #else
-    "AGS (NOT COMPILED)"
+    "AGS (NOT COMPILED)",
 #endif
 };
 
@@ -114,8 +114,8 @@ const char *nlopt_algorithm_to_string(nlopt_algorithm algorithm)
     case NLOPT_GN_ORIG_DIRECT_L: return "GN_ORIG_DIRECT_L";
     case NLOPT_GD_STOGO: return "GD_STOGO";
     case NLOPT_GD_STOGO_RAND: return "GD_STOGO_RAND";
-    case NLOPT_LD_LBFGS_NOCEDAL: return "LD_LBFGS_NOCEDAL";
     case NLOPT_LD_LBFGS: return "LD_LBFGS";
+    case NLOPT_LD_LBFGS_NOCEDAL: return "NLOPT_LD_LBFGS_NOCEDAL";
     case NLOPT_LN_PRAXIS: return "LN_PRAXIS";
     case NLOPT_LD_VAR1: return "LD_VAR1";
     case NLOPT_LD_VAR2: return "LD_VAR2";
@@ -185,9 +185,8 @@ const char *nlopt_result_to_string(nlopt_result result)
     case NLOPT_XTOL_REACHED: return "XTOL_REACHED";
     case NLOPT_MAXEVAL_REACHED: return "MAXEVAL_REACHED";
     case NLOPT_MAXTIME_REACHED: return "MAXTIME_REACHED";
-    case NLOPT_NUM_RESULTS: return NULL;
+    default: return NULL;
   }
-  return NULL;
 }
 
 
@@ -196,9 +195,10 @@ nlopt_result nlopt_result_from_string(const char * name)
   int i;
   if (name == NULL)
     return -1;
-  for (i = 0; i < NLOPT_NUM_RESULTS; ++i)
-  {
-    if (strcmp(name, nlopt_result_to_string(i)) == 0)
+  /* Check all valid negative (failure) and positive (success) result codes */
+  for (i = NLOPT_NUM_FAILURES + 1; i < NLOPT_NUM_RESULTS; ++i) {
+    const char *name_i = nlopt_result_to_string(i);
+    if (name_i != NULL && strcmp(name, name_i) == 0)
       return i;
   }
   return -1;

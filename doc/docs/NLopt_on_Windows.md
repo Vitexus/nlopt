@@ -12,7 +12,9 @@ To simplify installation, there are also precompiled 32-bit and 64-bit Windows [
 -  [NLopt.v2.6.2.i686-w64-mingw32.tar.gz](https://github.com/stevengj/NLoptBuilder/releases/download/v2.6.2/NLopt.v2.6.2.i686-w64-mingw32.tar.gz) (32-bit)
 -  [NLopt.v2.6.2.x86_64-w64-mingw32.tar.gz](https://github.com/stevengj/NLoptBuilder/releases/download/v2.6.2/NLopt.v2.6.2.x86_64-w64-mingw32.tar.gz) (64-bit)
 
-These `.tar.gz` files unpack (with a variety of Windows software, e.g. 7-zip) into a folder with a `bin` subdirectory that contains `libnlopt.dll`.  To link with this in your compiler, you will typically also want the [import library](https://stackoverflow.com/questions/3573475/how-does-the-import-library-work-details) for the DLL, which can be found in the `lib` subdirectory and is called `libnlopt.dll.a` (this can be used similarly to the `.lib` files you may be used to).
+These `.tar.gz` files unpack (with a variety of Windows software, e.g. 7-zip) into a folder with a `bin` subdirectory that contains `libnlopt.dll`.  To link with this in your compiler, you will typically also want the [import library](https://stackoverflow.com/questions/3573475/how-does-the-import-library-work-details) for the DLL, which can be found in the `lib` subdirectory and is called `libnlopt.dll.a` (this can be used similarly to the `.lib` files you may be used to).   See, in particular, [these instructions for nlopt](https://www.mathworks.com/matlabcentral/answers/380072-mex-error-undefined-reference#answer_356517).
+
+If you need a step-by-step guide on how to install NLopt and run the [tutorial](https://nlopt.readthedocs.io/en/latest/NLopt_Tutorial/) you might be interested in [this blog post](https://medium.com/@gabrielr.domingos/installing-nlopt-on-windows-and-using-it-with-c-3e84d91c8960).
 
 Unofficial Python binaries for Windows are available from Christoph Gohike:
 
@@ -20,7 +22,7 @@ Unofficial Python binaries for Windows are available from Christoph Gohike:
 
 ### NLopt with MinGW
 
-If you want to compile NLopt on Windows with [MinGW](http://www.mingw.org/), be sure to install the MinGW version of `cmake` (e.g. with `pacman -S mingw-w64-x86_64-cmake`) and then build via `cmake -G"MSYS Makefiles" . && make` in order to ensure that `cmake` produces the correct type of makefile.
+If you want to compile NLopt on Windows with [MinGW](https://www.mingw-w64.org/), be sure to install the MinGW version of `cmake` (e.g. with `pacman -S mingw-w64-x86_64-cmake`) and then build via `cmake -G"MSYS Makefiles" . && make` in order to ensure that `cmake` produces the correct type of makefile.
 
 ### Octave plugin
 

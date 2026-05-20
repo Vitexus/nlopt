@@ -9,7 +9,6 @@ Copyright (C) 2018 Sovrasov V. - All Rights Reserved
 
 #include <algorithm>
 #include <cmath>
-#include <iostream>
 
 using namespace ags;
 
@@ -32,12 +31,13 @@ namespace
                       const std::vector<double>& leftBound, const std::vector<double>& rightBound)
       {
         mFunctions = functions;
-        mConstraintsNumber = mFunctions.size() - 1;
-        mDimension = leftBound.size();
+        mConstraintsNumber = static_cast<unsigned int>(mFunctions.size() - 1);
+        mDimension = static_cast<unsigned int>(leftBound.size());
         mLeftBound = leftBound;
         mRightBound = rightBound;
       }
 
+      virtual ~ProblemInternal() {}
       double Calculate(const double* y, int fNumber) const
       {
         return mFunctions[fNumber](y);
@@ -191,7 +191,7 @@ void NLPSolver::FirstIteration()
 
   for (size_t i = 1; i <= mParameters.numPoints; i++)
   {
-    mNextPoints[i - 1] = Trial((double)i / (mParameters.numPoints + 1));
+    mNextPoints[i - 1] = Trial(static_cast<double>(i) / (mParameters.numPoints + 1));
     mEvolvent.GetImage(mNextPoints[i - 1].x, mNextPoints[i - 1].y);
   }
 
@@ -238,8 +238,8 @@ void NLPSolver::MakeTrials()
     if(idx > mMaxIdx)
     {
       mMaxIdx = idx;
-      for(int i = 0; i < mMaxIdx; i++)
-        mZEstimations[i] = -mParameters.epsR*mHEstimations[i];
+      for(int j = 0; j < mMaxIdx; ++ j)
+        mZEstimations[j] = -mParameters.epsR*mHEstimations[j];
       mNeedRefillQueue = true;
     }
     if (idx == mProblem->GetConstraintsNumber())
@@ -299,7 +299,6 @@ void NLPSolver::CalculateNextPoints()
 
     if (mNextPoints[i].x >= mNextIntervals[i]->pr.x || mNextPoints[i].x <= mNextIntervals[i]->pl.x)
       mNeedStop = true;
-      //std::cout << "Warning: resolution of evolvent is not enough to continue the search";
 
     mEvolvent.GetImage(mNextPoints[i].x, mNextPoints[i].y);
   }
@@ -342,7 +341,7 @@ void NLPSolver::UpdateH(double newValue, int index)
   }
 }
 
-void NLPSolver::UpdateAllH(std::set<Interval*>::iterator iterator)
+void NLPSolver::UpdateAllH(std::set<Interval*, ags::CompareIntervals>::iterator iterator)
 {
   Interval* pInterval = *iterator;
   if (pInterval->pl.idx < 0)

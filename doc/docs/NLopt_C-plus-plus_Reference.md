@@ -21,7 +21,7 @@ Compiling and linking your program to NLopt
 
 An NLopt program in C++ should include the NLopt C++ header file:
 
-`#include `<nlopt.hpp>
+`#include <nlopt.hpp>`
 
 On Unix, you would normally link your program exactly as for the C API, with a command something like:
 
@@ -96,12 +96,12 @@ void nlopt::opt::set_max_objective(nlopt::func f, void* f_data);
 ```
 
 
-where `f` is of the same form as the [C objective function](NLopt_Reference#objective-function).
+where `f` is of the same form as the [C objective function](NLopt_Reference.md#objective-function).
 
 Bound constraints
 -----------------
 
-The [bound constraints](NLopt_Reference#bound-constraints) can be specified by calling the methods:
+The [bound constraints](NLopt_Reference.md#bound-constraints) can be specified by calling the methods:
 
 ```
 void nlopt::opt::set_lower_bounds(const std::vector`<double>` &lb);
@@ -132,7 +132,7 @@ where the first two functions set their arguments (which must be vectors of leng
 Nonlinear constraints
 ---------------------
 
-Just as for [nonlinear constraints in C](NLopt_Reference#nonlinear-constraints), you can specify nonlinear inequality and equality constraints by the methods:
+Just as for [nonlinear constraints in C](NLopt_Reference.md#nonlinear-constraints), you can specify nonlinear inequality and equality constraints by the methods:
 
 ```
 void nlopt::opt::add_inequality_constraint(nlopt::vfunc fc, void *fc_data, double tol=0);
@@ -152,7 +152,7 @@ void nlopt::opt::remove_equality_constraints();
 
 ### Vector-valued constraints
 
-Just as for [nonlinear constraints in C](NLopt_Reference#vector-valued-constraints), you can specify nonlinear inequality and equality constraints by the methods:
+Just as for [nonlinear constraints in C](NLopt_Reference.md#vector-valued-constraints), you can specify nonlinear inequality and equality constraints by the methods:
 
 ```
 void nlopt::opt::add_inequality_mconstraint(nlopt::mfunc c, void *c_data, const vector`<double>` &tol);
@@ -167,7 +167,7 @@ Here, `tol` is a vector of the tolerances in each constraint dimension; the dime
 Stopping criteria
 -----------------
 
-As explained in the [C API Reference](NLopt_Reference#stopping-criteria) and the [Introduction](NLopt_Introduction#termination-conditions)), you have multiple options for different stopping criteria that you can specify. (Unspecified stopping criteria are disabled; i.e., they have innocuous defaults.)
+As explained in the [C API Reference](NLopt_Reference.md#stopping-criteria) and the [Introduction](NLopt_Introduction.md#termination-conditions)), you have multiple options for different stopping criteria that you can specify. (Unspecified stopping criteria are disabled; i.e., they have innocuous defaults.)
 
 For each stopping criteria, there are (at least) two method: a `set` method to specify the stopping criterion, and a `get` method to retrieve the current value for that criterion. The meanings of each criterion are exactly the same as in the C API.
 
@@ -248,7 +248,7 @@ Request the number of evaluations.
 
 ### Forced termination
 
-In certain cases, the caller may wish to *force* the optimization to halt, for some reason unknown to NLopt. For example, if the user presses Ctrl-C, or there is an error of some sort in the objective function. You can do this by throwing *any* exception inside your objective/constraint functions: the exception will be caught, the optimization will be halted gracefully, and another exception (possibly not the same one) will be rethrown. See [Exceptions](#exceptions), below. The C++ equivalent of `nlopt_forced_stop` from the [C API](NLopt_Reference#forced-termination) is to throw an `nlopt::forced_stop` exception.
+In certain cases, the caller may wish to *force* the optimization to halt, for some reason unknown to NLopt. For example, if the user presses Ctrl-C, or there is an error of some sort in the objective function. You can do this by throwing *any* exception inside your objective/constraint functions: the exception will be caught, the optimization will be halted gracefully, and another exception (possibly not the same one) will be rethrown. See [Exceptions](#exceptions), below. The C++ equivalent of `nlopt_forced_stop` from the [C API](NLopt_Reference.md#forced-termination) is to throw an `nlopt::forced_stop` exception.
 
 
 Algorithm-specific parameters
@@ -256,13 +256,13 @@ Algorithm-specific parameters
 
 Certain NLopt optimization algorithms allow you to specify additional parameters by calling
 ```
-nlopt_result nlopt::opt::set_param(const char *name, double val);
+void nlopt::opt::set_param(const char *name, double val);
 bool nlopt::opt::has_param(const char *name);
 double nlopt::opt::get_param(const char *name, double defaultval);
 unsigned nlopt::opt::num_params();
 const char *nlopt::opt::nth_param(unsigned n);
 ```
-where the string `name` is the name of an algorithm-specific parameter and `val` is the value you are setting the parameter to.   These functions are equivalent to the [C API](NLopt_Reference#algorithm-specific-parameters) functions of the corresponding names.
+where the string `name` is the name of an algorithm-specific parameter and `val` is the value you are setting the parameter to. These functions are equivalent to the [C API](NLopt_Reference.md#algorithm-specific-parameters) functions of the corresponding names.
 
 
 Performing the optimization
@@ -277,7 +277,7 @@ nlopt::result nlopt::opt::optimize(std::vector`<double>` &x, double &opt_f);
 
 On input, `x` is a vector of length `n` (the dimension of the problem from the `nlopt::opt` constructor) giving an initial guess for the optimization parameters. On successful return, `x` contains the optimized values of the optimization parameters, and `opt_f` contains the corresponding value of the objective function.
 
-The return value (see below) is positive on success, indicating the reason for termination. On failure (negative return codes), it throws an exception (see [Exceptions](#exceptions), below).
+The return value (see below) is positive on success, indicating the reason for termination. On failure (negative return codes), by default, it throws an exception (see [Exceptions](#exceptions), below).
 
 You can also call the following methods to retrieve the `opt_f` value from the last `optimize` call, and the return value (including negative/failure return values) from the last `optimize` call:
 
@@ -289,12 +289,12 @@ nlopt::result nlopt::opt::last_optimize_result() const;
 
 ### Return values
 
-The possible return values are the same as the [return values in the C API](NLopt_Reference#return-values), except that the `NLOPT_` prefix is replaced with the `nlopt::` namespace. That is, `NLOPT_SUCCESS` becomes `nlopt::SUCCESS`, etcetera.
+The possible return values are the same as the [return values in the C API](NLopt_Reference.md#return-values), except that the `NLOPT_` prefix is replaced with the `nlopt::` namespace. That is, `NLOPT_SUCCESS` becomes `nlopt::SUCCESS`, etcetera.
 
 Exceptions
 ----------
 
-The [Error codes (negative return values)](NLopt_Reference#error-codes-negative-return-values) in the C API are replaced in the C++ API by thrown exceptions. The following exceptions are thrown by the various routines:
+If exceptions are enabled (the default), the [Error codes (negative return values)](NLopt_Reference.md#error-codes-negative-return-values) in the C API are replaced in the C++ API by thrown exceptions. The following exceptions are thrown by the various routines:
 
 ```
 std::runtime_error
@@ -320,7 +320,16 @@ Halted because roundoff errors limited progress, equivalent to `NLOPT_ROUNDOFF_L
 `nlopt::forced_stop` (subclass of `std::runtime_error`)
 Halted because of a [forced termination](#forced-termination): the user called `nlopt::opt::force_stop()` from the user’s objective function or threw an `nlopt::forced_stop` exception. Equivalent to `NLOPT_FORCED_STOP`.
 
-If your objective/constraint functions throw *any* exception during the execution of `nlopt::opt::optimize`, it will be caught by NLopt and the optimization will be halted gracefully, and `nlopt::opt::optimize` will re-throw an exception. However, the exception that is re-thrown by `nlopt::opt::optimize` will be one of the five exceptions above; if the exception thrown by your code was not one of these five, it will be converted to a generic `std::runtime_error` exception. (The reason for this is that C++ has no clean way to save an arbitrary exception and rethrow it later, outside the original `catch` statement.) Therefore, if you want to do something special in response to a particular exception that is not one of these five, you should catch it yourself in your function, handle it however you want, and re-throw if desired.
+Whether this behavior is enabled or whether `nlopt::opt::optimize` just returns the error code as is is controlled by the `enable_exceptions` flag in `nlopt::opt`, which can be set and retrieved with the methods below.
+
+```
+void nlopt::opt::set_exceptions_enabled(bool enable);
+bool nlopt::opt::get_exceptions_enabled() const;
+```
+
+The default is `true`, i.e., to throw an exception. When setting `set_exceptions_enabled(false)`, it is the caller's responsibility to *manually* check the return code, as in C (or, equivalently, the `last_optimize_result`). This is especially useful in the bindings for other programming languages (e.g., Python), where `nlopt::opt::optimize` is modified to return the best point as a return value instead of overwriting the start point, and hence, if an exception is thrown, the best point can no longer be retrieved. But it can also be useful for pure C++ code.
+
+If your objective/constraint functions throw *any* exception during the execution of `nlopt::opt::optimize`, it will be caught by NLopt and the optimization will be halted gracefully, and, if exceptions are enabled, `nlopt::opt::optimize` will re-throw an exception. However, the exception that is re-thrown by `nlopt::opt::optimize` will be one of the five exceptions above; if the exception thrown by your code was not one of these five, it will be converted to a generic `std::runtime_error` exception. (The reason for this is that C++ has no clean way to save an arbitrary exception and rethrow it later, outside the original `catch` statement.) Therefore, if you want to do something special in response to a particular exception that is not one of these five, you should catch it yourself in your function, handle it however you want, and re-throw if desired. If exceptions are disabled, `nlopt::opt::optimize` will return `NLOPT_FORCED_STOP` instead of rethrowing a C++ exception, though bindings for languages such as Python may rethrow, e.g., Python exceptions.
 
 Local/subsidiary optimization algorithm
 ---------------------------------------
@@ -339,20 +348,19 @@ This function makes a copy of the `local_opt` object, so you can freely destroy 
 Initial step size
 -----------------
 
-Just as in the C API, you can [get and set the initial step sizes](NLopt_Reference#initial-step-size) for derivative-free optimization algorithms. The C++ equivalents of the C functions are the following methods:
+Just as in the C API, you can [get and set the initial step sizes](NLopt_Reference.md#initial-step-size) for derivative-free optimization algorithms. The C++ equivalents of the C functions are the following methods:
 
 ```
-void nlopt::opt::set_initial_step(const std::vector`<double>` &dx);
+void nlopt::opt::set_initial_step(const std::vector<double> &dx);
 void nlopt::opt::set_initial_step(double dx);
-void nlopt::opt::get_initial_step(const std::vector`<double>` &x, std::vector`<double>` &dx) const;
-std::vector`<double>` nlopt::opt::get_initial_step(const std::vector`<double>` &x) const;
+void nlopt::opt::get_initial_step(const std::vector<double> &x, std::vector<double> &dx) const;
 ```
 
 
 Stochastic population
 ---------------------
 
-Just as in the C API, you can [get and set the initial population](NLopt_Reference#stochastic-population) for stochastic optimization algorithms, by the methods:
+Just as in the C API, you can [get and set the initial population](NLopt_Reference.md#stochastic-population) for stochastic optimization algorithms, by the methods:
 
 ```
 void nlopt::opt::set_population(unsigned pop);
@@ -384,7 +392,7 @@ void nlopt::srand_time();
 Vector storage for limited-memory quasi-Newton algorithms
 ---------------------------------------------------------
 
-Just as in the C API, you can get and set the [number *M* of stored vectors](NLopt_Reference#vector-storage-for-limited-memory-quasi-newton-algorithms) for limited-memory quasi-Newton algorithms, via the methods:
+Just as in the C API, you can get and set the [number *M* of stored vectors](NLopt_Reference.md#vector-storage-for-limited-memory-quasi-newton-algorithms) for limited-memory quasi-Newton algorithms, via the methods:
 
 ```
 void nlopt::opt::set_vector_storage(unsigned M);

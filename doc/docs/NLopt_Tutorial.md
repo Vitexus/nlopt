@@ -51,7 +51,7 @@ double myfunc(unsigned n, const double *x, double *grad, void *my_func_
 ```
 
 
-There are several things to notice here. First, since this is C, our indices are zero-based, so we have `x[0]` and `x[1]` instead of *x*<sub>1</sub> and *x*<sub>2</sub>. The return value of our function is the objective $\sqrt{x_2}$. Also, if the parameter `grad` is not `NULL`, then we set `grad[0]` and `grad[1]` to the partial derivatives of our objective with respect to `x[0]` and `x[1]`. The gradient is only needed for [gradient-based algorithms](NLopt_Introduction#gradient-based-versus-derivative-free-algorithms); if you use a derivative-free optimization algorithm, `grad` will always be `NULL` and you need never compute any derivatives. Finally, we have an extra parameter `my_func_data` that can be used to pass additional data to `myfunc`, but no additional data is needed here so that parameter is unused.
+There are several things to notice here. First, since this is C, our indices are zero-based, so we have `x[0]` and `x[1]` instead of *x*<sub>1</sub> and *x*<sub>2</sub>. The return value of our function is the objective $\sqrt{x_2}$. Also, if the parameter `grad` is not `NULL`, then we set `grad[0]` and `grad[1]` to the partial derivatives of our objective with respect to `x[0]` and `x[1]`. The gradient is only needed for [gradient-based algorithms](NLopt_Introduction.md#gradient-based-versus-derivative-free-algorithms); if you use a derivative-free optimization algorithm, `grad` will always be `NULL` and you need never compute any derivatives. Finally, we have an extra parameter `my_func_data` that can be used to pass additional data to `myfunc`, but no additional data is needed here so that parameter is unused.
 
 For the constraints, on the other hand, we *will* have additional data. Each constraint is parameterized by two numbers *a* and *b*, so we will declare a data structure to hold this information:
 
@@ -365,7 +365,7 @@ retcode = 4
 ```
 
 
-(The [return code](NLopt_Reference#return-values) `4` corresponds to `NLOPT_XTOL_REACHED`, which means it converged to the specified *x* tolerance.) To switch to a derivative-free algorithm like COBYLA, we just change `opt.algorithm` parameter:
+(The [return code](NLopt_Reference.md#return-values) `4` corresponds to `NLOPT_XTOL_REACHED`, which means it converged to the specified *x* tolerance.) To switch to a derivative-free algorithm like COBYLA, we just change `opt.algorithm` parameter:
 
 ```matlab
 opt.algorithm = NLOPT_LN_COBYLA
@@ -482,7 +482,7 @@ result =  4
 ```
 
 
-finding the same correct optimum as in the C interface (of course). (The [return code](NLopt_Reference#return-values) `4` corresponds to `nlopt.XTOL_REACHED`, which means it converged to the specified *x* tolerance.)
+finding the same correct optimum as in the C interface (of course). (The [return code](NLopt_Reference.md#return-values) `4` corresponds to `nlopt.XTOL_REACHED`, which means it converged to the specified *x* tolerance.)
 
 ### Important: Modifying `grad` in-place
 
@@ -500,7 +500,7 @@ grad[:] = 2*x
 ```
 
 
-which *overwrites* the old contents of grad with `2*x`. See also the [NLopt Python Reference](NLopt_Python_Reference#assigning-results-in-place).
+which *overwrites* the old contents of grad with `2*x`. See also the [NLopt Python Reference](NLopt_Python_Reference.md#assigning-results-in-place).
 
 Example in GNU Guile (Scheme)
 -----------------------------
@@ -543,6 +543,58 @@ Note that the objective/constraint functions take two arguments, `x` and `grad`,
 On error conditions, the NLopt functions throw [exceptions](http://www.gnu.org/software/guile/manual/html_node/Exceptions.html) that can be caught by your Scheme code if you wish.
 
 The heavy use of side-effects here is a bit unnatural in Scheme, but is used in order to closely map to the C++ interface. (Notice that `nlopt::` C++ functions map to `nlopt-` Guile functions, and `nlopt::opt::` methods map to `nlopt-opt-` functions that take the `opt` object as the first argument.) Of course, you are free to wrap your own Scheme-like functional interface around this if you wish.
+
+Example in Java
+---------------
+
+In Java (1.8 or later), the equivalent of the example above would be:
+
+```java
+import nlopt.*;
+
+public class t_java {
+  private static double myfunc(double[] x, double[] grad) {
+    if (grad != null) {
+      grad[0] = 0.0;
+      grad[1] = 0.5 / Math.sqrt(x[1]);
+    }
+    return Math.sqrt(x[1]);
+  }
+
+  private static double myconstraint(double[] x, double[] grad, double a,
+                                     double b) {
+    if (grad != null) {
+      grad[0] = 3 * a * (a*x[0] + b) * (a*x[0] + b);
+      grad[1] = -1.0;
+    }
+    return ((a*x[0] + b) * (a*x[0] + b) * (a*x[0] + b) - x[1]);
+  }
+
+  public static void main(String[] args) {
+    System.loadLibrary("nloptjni");
+    Opt opt = new Opt(Algorithm.LD_MMA, 2);
+    opt.setLowerBounds(new DoubleVector(Double.NEGATIVE_INFINITY, 0.));
+    opt.setMinObjective(t_java::myfunc);
+    opt.addInequalityConstraint((x, grad) -> myconstraint(x, grad, 2, 0), 1e-8);
+    opt.addInequalityConstraint((x, grad) -> myconstraint(x, grad, -1, 1),
+                                1e-8);
+    opt.setXtolRel(1e-4);
+    DoubleVector x = opt.optimize(new DoubleVector(1.234, 5.678));
+    double minf = opt.lastOptimumValue();
+    System.out.println("optimum at " + x);
+    System.out.println("minimum value: " + minf);
+    System.out.println("result code: " + opt.lastOptimizeResult());
+  }
+}
+```
+
+Note that the objective/constraint functions take two arguments, `x` and `grad`, and return a number. `x` is a vector whose length is the dimension of the problem; grad is either `null` if it is not needed, or a `DoubleVector` that must be modified *in-place* to the gradient of the function.
+
+Also note that the above example uses lambdas, both in the explicit `(x, grad) -> ` notation and using the `::` operator, so it will compile as is only with Java 1.8 or later. The Java binding supports Java 1.5 or later, but if you wish to support versions 1.5 to 1.7, you cannot use lambdas. Instead, for Java prior to 1.8, you would have to explicitly declare the anonymous classes implementing the interfaces, leading to less readable code.
+
+On error conditions, the NLopt functions throw Java runtime exceptions (unchecked exceptions) that can be caught by your Java code if you wish.
+
+Note that the class and method names are renamed to camel case as usual in Java: upper camel case for classes, lower camel case for methods. The exception classes additionally have `Exception` appended to their names. The `nlopt` C++ namespace maps to the `nlopt` Java package, global `nlopt::` C++ functions map to static methods of the `nlopt.NLopt` class, methods of classes (e.g., `nlopt::opt`) map to the methods of the corresponding Java class (e.g., `nlopt.Opt`), and `std::vector<double>` maps to `nlopt.DoubleVector`.
 
 Example in Fortran
 ------------------
